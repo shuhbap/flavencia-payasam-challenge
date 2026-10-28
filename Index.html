@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en"><head><base target="_top"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Payasam Challenge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--milk:#fffdf6;--ghee:#f7ecd0;--saffron:#e0961a;--gold:#f2b632;--cardamom:#2c6b4f;--jaggery:#3d1f10;--ink:#2b1a10;--mute:#7a6757;--line:#eadfc6;--red:#b3392b;--blue:#2f63a8;--r:18px;--sh:0 8px 28px rgba(61,31,16,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.55 'Nunito Sans',system-ui,sans-serif;color:var(--ink);background:var(--milk)}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;margin:0;line-height:1.15;color:var(--jaggery)}
+button,input,select,textarea{font:inherit}
+header{position:sticky;top:0;z-index:20;background:var(--jaggery);color:#fff;display:flex;align-items:center;gap:14px;padding:10px 18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:Fraunces,serif;font-weight:800;font-size:1.15rem;cursor:pointer;color:#fff;background:none;border:0;padding:0}
+nav{display:flex;gap:6px;overflow-x:auto;flex:1;justify-content:flex-end;scrollbar-width:none}nav::-webkit-scrollbar{display:none}
+nav button{background:transparent;color:#f6e7c4;border:1px solid transparent;border-radius:999px;padding:7px 14px;cursor:pointer;white-space:nowrap;font-weight:600}
+nav button:hover,nav button.on{background:rgba(242,182,50,.18);border-color:var(--gold);color:#fff}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 18px}
+.hero{background:radial-gradient(circle at 80% 20%,rgba(242,182,50,.45),transparent 45%),linear-gradient(135deg,#3d1f10,#5a2d14 60%,#2c6b4f);color:#fff;padding:64px 18px 70px;text-align:center}
+.hero h1{color:#fff;font-size:clamp(2.4rem,8vw,5rem);font-weight:800;letter-spacing:.02em}
+.hero p{max-width:620px;margin:16px auto 28px;font-size:1.15rem;color:#f9e6b7}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{border:0;border-radius:12px;padding:12px 22px;font-weight:700;cursor:pointer;background:var(--cardamom);color:#fff;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.2)}.btn:disabled{opacity:.6;cursor:wait;transform:none}
+.btn.gold{background:var(--gold);color:var(--jaggery)}.btn.ghost{background:transparent;border:2px solid #f6e7c4;color:#fff}
+.btn.sm{padding:6px 12px;font-size:.88rem;border-radius:9px}.btn.out{background:#fff;color:var(--jaggery);border:1px solid var(--line)}.btn.red{background:var(--red)}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:-44px;position:relative}
+.stat{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;box-shadow:var(--sh)}
+.stat b{display:block;font-family:Fraunces,serif;font-size:1.7rem;color:var(--cardamom);line-height:1.2;word-break:break-word}.stat span{color:var(--mute);font-size:.9rem}
+.sec-h{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin:34px 0 16px}
+.sec-h h2{font-size:clamp(1.5rem,4vw,2.1rem)}.muted{color:var(--mute);font-size:.88rem}
+.tabs{display:flex;gap:6px;background:var(--ghee);padding:5px;border-radius:14px;flex-wrap:wrap}
+.tabs button{border:0;background:transparent;padding:8px 16px;border-radius:10px;cursor:pointer;font-weight:700;color:var(--jaggery)}
+.tabs button.on{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.12);color:var(--cardamom)}
+.podium{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:14px;align-items:end;margin:18px 0 26px}
+.pod{border-radius:var(--r);padding:18px;text-align:center;border:1px solid var(--line);box-shadow:var(--sh);background:#fff}
+.pod .medal{font-size:2.2rem}.pod h3{font-size:1.2rem;margin:4px 0 10px;word-break:break-word}
+.pod dl{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:.88rem}.pod dt{color:var(--mute)}.pod dd{margin:0;font-weight:700}
+.pod .bar{height:8px;background:rgba(0,0,0,.1);border-radius:9px;margin-top:12px;overflow:hidden}.pod .bar i{display:block;height:100%;background:var(--cardamom);border-radius:9px}
+.p1{background:linear-gradient(160deg,#fff3c4,#f2b632);border:2px solid #d69a12;padding:26px 18px;order:2;transform:translateY(-10px);box-shadow:0 14px 36px rgba(214,154,18,.4)}
+.p1 h3{font-size:1.5rem}.p2{background:linear-gradient(160deg,#fff,#dfe3e8);order:1}.p3{background:linear-gradient(160deg,#fff,#efd2b4);order:3}
+.crown{animation:bob 2.4s ease-in-out infinite;display:inline-block}@keyframes bob{50%{transform:translateY(-5px)}}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:#fff}
+table{border-collapse:collapse;width:100%;min-width:560px}th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);font-size:.92rem;white-space:nowrap}
+th{background:var(--ghee);color:var(--jaggery);position:sticky;top:0}tr:last-child td{border-bottom:0}td.n,th.n{text-align:right}
+.rk{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--ghee);font-weight:800}
+.tools{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;align-items:center;margin:12px 0}
+input,select,textarea{width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:11px;background:#fff;color:var(--ink)}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:3px solid rgba(224,150,26,.45);border-color:var(--saffron)}
+label{display:block;font-weight:700;font-size:.9rem;margin:12px 0 5px}.tools input,.tools select{width:auto;min-width:160px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}.form{max-width:560px;margin:0 auto}
+.prev{background:var(--ghee);border-radius:12px;padding:12px 16px;margin-top:14px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-weight:700}
+.badge{padding:3px 10px;border-radius:99px;font-size:.78rem;font-weight:700;color:#fff;background:var(--blue)}
+.b-Confirmed{background:var(--saffron)}.b-Delivered{background:var(--cardamom)}.b-Cancelled{background:var(--red)}
+.spin{width:38px;height:38px;border:4px solid var(--ghee);border-top-color:var(--saffron);border-radius:50%;animation:sp .8s linear infinite;margin:26px auto}.spin.s{display:inline-block;width:14px;height:14px;border-width:2px;margin:0 6px -2px 0;vertical-align:baseline}@keyframes sp{to{transform:rotate(360deg)}}
+#toast{position:fixed;right:14px;bottom:14px;z-index:60;display:grid;gap:8px;max-width:calc(100vw - 28px)}
+.t{padding:12px 16px;border-radius:12px;color:#fff;font-weight:700;box-shadow:var(--sh);background:var(--cardamom)}.t.err{background:var(--red)}
+.modal{position:fixed;inset:0;background:rgba(40,20,10,.55);display:grid;place-items:center;padding:14px;z-index:50}.modal .card{width:100%;max-width:560px;max-height:92vh;overflow:auto}
+.ok-box{background:#e8f5ee;border:1px solid #9bd0b3;border-radius:14px;padding:16px;margin-top:14px}.err-t{color:var(--red);font-weight:700}.empty{text-align:center;padding:30px;color:var(--mute)}
+.pager{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:12px;flex-wrap:wrap}
+.bg{display:flex;gap:8px;flex-wrap:wrap}.dstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}.dstats .stat{box-shadow:none}
+@media(max-width:720px){.podium{grid-template-columns:1fr}.p1{order:1;transform:none}.p2{order:2}.p3{order:3}.grid2{grid-template-columns:1fr}nav{justify-content:flex-start;width:100%}.stats{margin-top:-30px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<header>
+<button class="brand" id="brand" aria-label="Payasam Challenge home"><svg width="38" height="38" viewBox="0 0 48 48" aria-hidden="true"><path d="M5 22h38c0 11-8 19-19 19S5 33 5 22z" fill="#f2b632"/><path d="M8 22h32" stroke="#3d1f10" stroke-width="3"/><circle cx="17" cy="15" r="3" fill="#fff3c4"/><circle cx="26" cy="12" r="3.5" fill="#fff3c4"/><circle cx="34" cy="16" r="2.6" fill="#fff3c4"/><path d="M16 44h16" stroke="#f2b632" stroke-width="3" stroke-linecap="round"/></svg><span>Payasam Challenge</span></button>
+<nav id="nav"></nav>
+</header>
+<main id="app"></main><div id="toast" aria-live="polite"></div><div id="modal"></div>
+<script>const INIT_PAGE='<?= page ?>';</script>
+<script>
+/* ---------- utilities ---------- */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const inr=n=>'₹'+Number(n||0).toLocaleString('en-IN',{maximumFractionDigits:2});
+const nf=n=>Number(n||0).toLocaleString('en-IN',{maximumFractionDigits:2});
+const dt=s=>String(s||'').replace('T',' ').slice(0,16);
+const mem={};
+const store={get(k){try{return sessionStorage.getItem(k)}catch(e){return mem[k]||null}},set(k,v){try{sessionStorage.setItem(k,v)}catch(e){mem[k]=v}},del(k){try{sessionStorage.removeItem(k)}catch(e){delete mem[k]}}};
+const rid=()=>(window.crypto&&crypto.randomUUID)?crypto.randomUUID():Date.now()+'-'+Math.random().toString(36).slice(2);
+const MODE={orders:'Most Orders',litres:'Most Litres',sales:'Highest Sales'};
+const fmtScore=(m,v)=>m==='sales'?inr(v):m==='litres'?nf(v)+' L':nf(v);
+let cur='home';
+function toast(m,t){const e=document.createElement('div');e.className='t '+(t||'');e.textContent=m;$('#toast').appendChild(e);setTimeout(()=>e.remove(),4500)}
+const app=h=>{$('#app').innerHTML=h;window.scrollTo(0,0)};
+const loading='<div class="spin" role="status" aria-label="Loading"></div>';
+function call(action,p){return new Promise((res,rej)=>{google.script.run
+ .withSuccessHandler(r=>{let o;try{o=JSON.parse(r)}catch(e){return rej(new Error('Bad server response.'))}
+  if(o.ok)res(o.data);else{if(/^Session expired/.test(o.error)){clearAuth();if(cur==='dash'||cur==='admin'){go(INIT_PAGE==='admin'?'admin':'login')}}rej(new Error(o.error))}})
+ .withFailureHandler(()=>rej(new Error('Network problem. Check your connection and try again.')))
+ .api(action,p||{})})}
+async function run(btn,fn){const o=btn.innerHTML;btn.disabled=true;btn.innerHTML='<span class="spin s"></span>Please wait';try{return await fn()}catch(e){toast(e.message,'err')}finally{btn.disabled=false;btn.innerHTML=o}}
+function clearAuth(){['pc_t','pc_tn','pc_a'].forEach(store.del)}
+function modal(h){$('#modal').innerHTML='<div class="modal" id="mbg"><div class="card" role="dialog" aria-modal="true">'+h+'</div></div>';$('#mbg').onclick=e=>{if(e.target.id==='mbg')closeModal()}}
+function closeModal(){$('#modal').innerHTML=''}
+function fields(o){return Object.fromEntries([...document.querySelectorAll('#app [data-f],#modal [data-f]')].map(e=>[e.dataset.f,e.value]))}
+function stat(v,l){return '<div class="stat"><b>'+v+'</b><span>'+l+'</span></div>'}
+function badge(s){return '<span class="badge b-'+esc(s)+'">'+esc(s)+'</span>'}
+function csvDownload(name,cols,rows){const c=v=>{v=String(v==null?'':v);if(/^[=+\-@\t\r]/.test(v)&&isNaN(Number(v)))v="'"+v;return '"'+v.replace(/"/g,'""')+'"'};
+ const txt='\ufeff'+[cols,...rows].map(r=>r.map(c).join(',')).join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:'text/csv;charset=utf-8'}));a.download=name+'.csv';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
+
+/* ---------- navigation ---------- */
+function renderNav(){
+ if(INIT_PAGE==='admin'){$('#nav').innerHTML=store.get('pc_a')?'<button id="n-out">Log out</button>':'';if(store.get('pc_a'))$('#n-out').onclick=adminLogout;return}
+ const t=!!store.get('pc_t'),it=[['home','Home'],['register','Team Registration'],[t?'dash':'login',t?'My Dashboard':'Team Login'],['individual','Individual Order'],['board','Leaderboard']];
+ $('#nav').innerHTML=it.map(i=>'<button data-go="'+i[0]+'" class="'+(i[0]===cur?'on':'')+'">'+i[1]+'</button>').join('')+(t?'<button id="n-out">Log out</button>':'');
+ document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));if(t)$('#n-out').onclick=teamLogout}
+function go(v){
+ if(INIT_PAGE==='admin'){cur='admin';renderNav();return viewAdmin()}
+ if(v==='board'){if(cur!=='home')go('home');setTimeout(()=>{const b=$('#board');b&&b.scrollIntoView()},60);return}
+ if(v==='dash'&&!store.get('pc_t'))v='login';
+ cur=v;renderNav();({home:viewHome,register:viewRegister,login:viewLogin,individual:viewIndividual,dash:viewDash}[v]||viewHome)()}
+$('#brand').onclick=()=>go('home');
+
+/* ---------- HOME + LIVE LEADERBOARD ---------- */
+const B={mode:null,data:null,page:1,size:10,q:''};
+function viewHome(){
+ app(`<section class="hero"><h1>PAYASAM CHALLENGE</h1><p>Every Order Counts. Every Litre Matters. Compete for the Top!</p>
+ <div class="btns"><button class="btn gold" data-go2="register">Register Your Team</button><button class="btn ghost" data-go2="login">Team Login</button><button class="btn ghost" data-go2="board">View Live Rankings</button></div></section>
+ <div class="wrap" style="padding-top:0"><div class="stats" id="stats">${loading}</div>
+ <div class="sec-h" id="board"><div><h2>Live Team Leaderboard</h2><span class="muted" id="upd">Loading…</span></div><div class="tabs" id="mtabs"></div></div><div id="boardBody">${loading}</div></div>`);
+ document.querySelectorAll('[data-go2]').forEach(b=>b.onclick=()=>go(b.dataset.go2));loadStats();loadBoard()}
+async function loadStats(){try{const s=await call('stats');if(!$('#stats'))return;$('#stats').innerHTML=stat(nf(s.teams),'Registered teams')+stat(nf(s.orders),'Valid orders')+stat(nf(s.litres)+' L','Litres sold')+stat(inr(s.sales),'Total sales')+stat(nf(s.customers),'Customers')}catch(e){$('#stats')&&($('#stats').innerHTML='<p class="err-t">'+esc(e.message)+'</p>')}}
+async function loadBoard(mode){
+ try{const d=await call('leaderboard',{mode:mode||B.mode||''});B.data=d;B.mode=d.mode;if(mode)B.page=1;renderBoard()}
+ catch(e){$('#boardBody')&&($('#boardBody').innerHTML='<p class="err-t">'+esc(e.message)+'</p>')}}
+function renderBoard(){
+ if(!$('#boardBody')||!B.data)return;const d=B.data,m=B.mode;
+ $('#upd').textContent='Last updated '+dt(d.updatedAt)+' · refreshes every 30 seconds';
+ $('#mtabs').innerHTML=Object.keys(MODE).map(k=>'<button data-m="'+k+'" class="'+(k===m?'on':'')+'">'+MODE[k]+'</button>').join('');
+ document.querySelectorAll('#mtabs [data-m]').forEach(b=>b.onclick=()=>loadBoard(b.dataset.m));
+ if(!d.teams.length){$('#boardBody').innerHTML='<div class="card empty"><h3>No teams yet</h3><p>Be the first to register a team and claim the top spot.</p></div>';return}
+ const med=['🥇','🥈','🥉'],pod=d.teams.slice(0,3).map((t,i)=>`<div class="pod p${i+1}"><div class="medal ${i?'':'crown'}">${med[i]}</div><div class="muted">Rank ${t.rank}</div><h3>${esc(t.name)}</h3>
+ <dl><dt>Orders</dt><dd>${nf(t.orders)}</dd><dt>Litres</dt><dd>${nf(t.litres)} L</dd><dt>Sales</dt><dd>${inr(t.sales)}</dd><dt>Of leader</dt><dd>${t.progress}%</dd></dl><div class="bar"><i style="width:${Math.min(100,t.progress)}%"></i></div></div>`).join('');
+ const q=B.q.toLowerCase(),f=d.teams.filter(t=>t.name.toLowerCase().includes(q)),size=B.size||f.length||1,pages=Math.max(1,Math.ceil(f.length/size));B.page=Math.min(B.page,pages);
+ const rows=f.slice((B.page-1)*size,B.page*size).map(t=>`<tr><td><span class="rk">${t.rank}</span></td><td><b>${esc(t.name)}</b></td><td class="n">${nf(t.orders)}</td><td class="n">${nf(t.litres)}</td><td class="n">${inr(t.sales)}</td><td class="n"><b>${fmtScore(m,t.score)}</b></td></tr>`).join('');
+ const focus=document.activeElement&&document.activeElement.id==='bq';
+ $('#boardBody').innerHTML=`<div class="podium">${pod}</div><div class="tools"><input id="bq" type="search" placeholder="Search teams" value="${esc(B.q)}" aria-label="Search teams"><button class="btn out sm" id="vall">${B.size?'View All Teams':'Show Pages'}</button></div>
+ <div class="tw"><table><thead><tr><th>Rank</th><th>Team</th><th class="n">Orders</th><th class="n">Litres</th><th class="n">Sales</th><th class="n">Ranking score (${MODE[m]})</th></tr></thead><tbody>${rows||'<tr><td colspan="6" class="empty">No teams match your search.</td></tr>'}</tbody></table></div>
+ <div class="pager"><button class="btn out sm" id="pp" ${B.page<=1?'disabled':''}>Previous</button><span class="muted">Page ${B.page} of ${pages}</span><button class="btn out sm" id="pn" ${B.page>=pages?'disabled':''}>Next</button></div>`;
+ $('#bq').oninput=e=>{B.q=e.target.value;B.page=1;renderBoard()};if(focus){const i=$('#bq');i.focus();i.setSelectionRange(i.value.length,i.value.length)}
+ $('#vall').onclick=()=>{B.size=B.size?0:10;B.page=1;renderBoard()};$('#pp').onclick=()=>{B.page--;renderBoard()};$('#pn').onclick=()=>{B.page++;renderBoard()}}
+setInterval(()=>{if(cur==='home'&&INIT_PAGE!=='admin'&&!document.hidden){loadStats();loadBoard()}},30000);
+
+/* ---------- REGISTER / LOGIN ---------- */
+function viewRegister(){
+ app(`<div class="wrap"><div class="card form"><h2>Register your team</h2><p class="muted">Pick a name, set a password, and start recording orders.</p><div id="rmsg"></div>
+ <label for="rn">Team name</label><input id="rn" data-f="teamName" maxlength="40" autocomplete="off">
+ <label for="rm">Number of team members</label><input id="rm" data-f="members" type="number" min="1" max="100" inputmode="numeric">
+ <label for="rp">Team password</label><input id="rp" data-f="password" type="password" autocomplete="new-password">
+ <label for="rc">Confirm password</label><input id="rc" data-f="confirm" type="password" autocomplete="new-password">
+ <p><button class="btn" id="rs" style="width:100%;margin-top:18px">Register team</button></p></div></div>`);
+ $('#rs').onclick=e=>run(e.target,async()=>{const f=fields();const r=await call('register',f);toast('Team registered');
+  $('#rmsg').innerHTML=`<div class="ok-box"><b>${esc(r.teamName)} is registered.</b><br>Team ID: ${esc(r.teamId)}<br><button class="btn" id="tl" style="margin-top:10px">Go to team login</button></div>`;$('#tl').onclick=()=>go('login')})}
+function viewLogin(){
+ app(`<div class="wrap"><div class="card form"><h2>Team login</h2><label for="ln">Team name</label><input id="ln" data-f="teamName" autocomplete="username">
+ <label for="lp">Password</label><input id="lp" data-f="password" type="password" autocomplete="current-password">
+ <p><button class="btn" id="ls" style="width:100%;margin-top:18px">Log in</button></p><p class="muted">New here? <a href="#" id="lr">Register your team</a></p></div></div>`);
+ $('#lr').onclick=e=>{e.preventDefault();go('register')};
+ const sub=b=>run(b,async()=>{const r=await call('login',fields());store.set('pc_t',r.token);store.set('pc_tn',r.teamName);toast('Welcome, '+r.teamName);go('dash')});
+ $('#ls').onclick=e=>sub(e.target);$('#lp').onkeydown=e=>{if(e.key==='Enter')sub($('#ls'))}}
+async function teamLogout(){const t=store.get('pc_t');clearAuth();try{await call('logout',{token:t})}catch(e){}toast('Logged out');go('home')}
+
+/* ---------- ORDER FORM (shared) ---------- */
+function orderFormHtml(withTeam,teams){return `${withTeam?`<label for="oteam">Team name</label><select id="oteam" data-f="teamName"><option value="">Select a team</option>${teams.map(t=>'<option>'+esc(t)+'</option>').join('')}</select>`:''}
+ <label for="ocn">Customer name</label><input id="ocn" data-f="customerName" maxlength="80">
+ <div class="grid2"><div><label for="oph">Phone number</label><input id="oph" data-f="phone" type="tel" inputmode="tel"></div><div><label for="oli">Litres of payasam</label><input id="oli" data-f="litres" type="number" min="0.5" step="0.5" inputmode="decimal"></div>
+ <div><label for="omt">Payment method</label><select id="omt" data-f="method"><option>Ready Cash</option><option>UPI</option><option>Pending</option></select></div><div><label for="oam">Amount received (₹)</label><input id="oam" data-f="amountReceived" type="number" min="0" step="0.01" value="0" inputmode="decimal"></div></div>
+ <label for="ono">Notes (optional)</label><textarea id="ono" data-f="notes" rows="2" maxlength="200"></textarea>
+ <div class="prev"><span>Price/litre: <span id="pp1"></span></span><span>Total: <span id="pt"></span></span><span>Balance due: <span id="pb"></span></span></div>`}
+function bindOrderForm(price,submit,btn){
+ const calc=()=>{const l=+$('#oli').value||0,t=Math.round(l*price*100)/100,pend=$('#omt').value==='Pending';$('#oam').disabled=pend;if(pend)$('#oam').value=0;
+  $('#pp1').textContent=inr(price);$('#pt').textContent=inr(t);$('#pb').textContent=inr(t-(+$('#oam').value||0))};
+ ['oli','oam','omt'].forEach(i=>$('#'+i).oninput=calc);calc();let id=rid();
+ btn.onclick=e=>run(e.target,async()=>{const f=fields();f.requestId=id;const r=await submit(f);id=rid();toast('Order saved: '+r.orderId);return r})}
+function orderDone(r){return `<div class="ok-box"><b>Order ${esc(r.orderId)} saved</b><br>Team: ${esc(r.team)} · ${nf(r.litres)} L × ${inr(r.price)}<br>Total ${inr(r.total)} · Received ${inr(r.received)} · Balance ${inr(r.due)}</div>`}
+
+/* ---------- INDIVIDUAL ORDER ---------- */
+async function viewIndividual(){
+ app(loading);let info;try{info=await call('publicInfo')}catch(e){return app('<div class="wrap"><p class="err-t">'+esc(e.message)+'</p></div>')}
+ app(`<div class="wrap"><div class="card form"><h2>Individual order</h2><p class="muted">Order payasam and support a team. Your details stay private.</p><div id="omsg"></div>${orderFormHtml(true,info.teams)}
+ <p><button class="btn" id="osub" style="width:100%;margin-top:18px">Place order</button></p></div></div>`);
+ bindOrderForm(info.price,f=>call('individualOrder',f),$('#osub'));
+ const b=$('#osub'),orig=b.onclick;b.onclick=async e=>{const r=await orig(e);if(r){$('#omsg').innerHTML=orderDone(r);B.data=null;document.querySelectorAll('[data-f]').forEach(x=>{if(x.id!=='oteam'&&x.id!=='omt')x.value=x.id==='oam'?0:''})}}}
+
+/* ---------- TEAM DASHBOARD ---------- */
+let D=null,DQ='',DM=null;
+async function viewDash(){
+ app(loading);try{D=await call('teamDash',{token:store.get('pc_t')})}catch(e){return cur==='dash'?app('<div class="wrap"><p class="err-t">'+esc(e.message)+'</p></div>'):0}
+ DM=DM||D.defaultRanking;renderDash()}
+function renderDash(){
+ const s=D.stats,r=D.rank[DM];
+ app(`<div class="wrap"><div class="sec-h" style="margin-top:0"><div><h2>${esc(D.team.name)}</h2><span class="muted">Team ID ${esc(D.team.id)} · ${D.team.members} members · ₹${D.price}/litre</span></div></div>
+ <div class="dstats">${stat(nf(s.orders),'Total orders')+stat(nf(s.litres)+' L','Total litres')+stat(inr(s.sales),'Total sales')+stat(inr(s.cash),'Cash collected')+stat(inr(s.due),'Outstanding balance')+stat(nf(s.customers),'Customers')}</div>
+ <div class="card"><div class="tools" style="margin-top:0"><h3>Your ranking</h3><div class="tabs">${Object.keys(MODE).map(k=>'<button data-dm="'+k+'" class="'+(k===DM?'on':'')+'">'+MODE[k]+'</button>').join('')}</div></div>
+ <p style="font-size:1.3rem;margin:6px 0"><b>#${r.rank}</b> of ${r.total} teams</p><div class="pod" style="padding:10px"><div class="bar" style="margin:0"><i style="width:${Math.min(100,r.progress)}%"></i></div></div>
+ <p class="muted">${r.rank===1?'You are leading! Keep going.':'You are at '+r.progress+'% of the leader ('+esc(r.leaderName)+': '+fmtScore(DM,r.leader)+'; you: '+fmtScore(DM,r.mine)+').'}</p></div>
+ <div class="sec-h"><h2>Quick order</h2></div><div class="card"><div id="qmsg"></div>${orderFormHtml(false)}<p><button class="btn" id="qsub" style="margin-top:14px">Save order</button></p></div>
+ <div class="sec-h"><h2>Recent orders</h2></div><div id="recent"></div>
+ <div class="sec-h"><h2>Order history</h2><input id="dq" type="search" placeholder="Search orders" value="${esc(DQ)}" style="max-width:240px"></div><div id="hist"></div></div>`);
+ document.querySelectorAll('[data-dm]').forEach(b=>b.onclick=()=>{DM=b.dataset.dm;renderDash()});
+ bindOrderForm(D.price,f=>call('teamOrder',Object.assign({token:store.get('pc_t')},f)),$('#qsub'));
+ const b=$('#qsub'),orig=b.onclick;b.onclick=async e=>{const r=await orig(e);if(r){await refreshDash();$('#qmsg').innerHTML=orderDone(r)}};
+ $('#dq').oninput=e=>{DQ=e.target.value;renderHist()};renderHist()}
+async function refreshDash(){D=await call('teamDash',{token:store.get('pc_t')});renderDash()}
+function orderTable(list,actions){return list.length?`<div class="tw"><table><thead><tr><th>Order ID</th><th>Date</th>${actions==='admin'?'<th>Team</th>':''}<th>Customer</th><th>Phone</th><th class="n">Litres</th><th class="n">Total</th><th class="n">Received</th><th class="n">Balance</th><th>Method</th><th>Status</th><th></th></tr></thead><tbody>${list.map(o=>`<tr><td>${esc(o.id)}</td><td>${dt(o.created)}</td>${actions==='admin'?'<td>'+esc(o.team)+'</td>':''}<td>${esc(o.customer)}</td><td>${esc(o.phone)}</td><td class="n">${nf(o.litres)}</td><td class="n">${inr(o.total)}</td><td class="n">${inr(o.received)}</td><td class="n">${inr(o.due)}</td><td>${esc(o.method)}</td><td>${badge(o.status)}</td><td><button class="btn sm" data-edit="${esc(o.id)}">Update</button></td></tr>`).join('')}</tbody></table></div>`:'<div class="card empty">No orders yet. Record your first order above.</div>'}
+function renderHist(){
+ $('#recent').innerHTML=orderTable(D.orders.slice(0,5),'team');
+ const q=DQ.toLowerCase(),l=D.orders.filter(o=>!q||(o.id+o.customer+o.phone+o.status+o.method).toLowerCase().includes(q));
+ $('#hist').innerHTML=orderTable(l,'team');
+ document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>teamEdit(D.orders.find(o=>o.id===b.dataset.edit)))}
+function teamEdit(o){
+ modal(`<h3>Update ${esc(o.id)}</h3><p class="muted">${esc(o.customer)} · total ${inr(o.total)}</p><label>Order status</label><select data-f="status">${['New','Confirmed','Delivered','Cancelled'].map(s=>'<option '+(s===o.status?'selected':'')+'>'+s+'</option>').join('')}</select>
+ <label>Total amount received (₹)</label><input data-f="amountReceived" type="number" min="0" step="0.01" value="${o.received}"><div class="bg" style="margin-top:16px"><button class="btn" id="msave">Save changes</button><button class="btn out" id="mclose">Close</button></div>`);
+ $('#mclose').onclick=closeModal;$('#msave').onclick=e=>run(e.target,async()=>{const f=fields();await call('teamUpdateOrder',Object.assign({token:store.get('pc_t'),orderId:o.id},f));closeModal();toast('Order updated');await refreshDash()})}
+
+/* ---------- ADMIN ---------- */
+const A={tab:'overview',mode:null,data:null,tq:'',orders:[],rep:null};
+function adminLogout(){const t=store.get('pc_a');clearAuth();call('logout',{token:t}).catch(()=>{});renderNav();viewAdmin()}
+async function viewAdmin(){
+ if(!store.get('pc_a'))return app(`<div class="wrap"><div class="card form"><h2>Admin login</h2><label for="ai">Admin ID</label><input id="ai" data-f="adminId" autocomplete="username"><label for="ap">Admin password</label><input id="ap" data-f="adminPassword" type="password" autocomplete="current-password">
+ <p><button class="btn" id="as" style="width:100%;margin-top:18px">Log in</button></p></div></div>`)||(()=>{const s=b=>run(b,async()=>{const r=await call('adminLogin',fields());store.set('pc_a',r.token);renderNav();viewAdmin()});$('#as').onclick=e=>s(e.target);$('#ap').onkeydown=e=>{if(e.key==='Enter')s($('#as'))}})();
+ app(loading);await loadAdmin(A.mode)}
+async function loadAdmin(mode){try{A.data=await call('adminDash',{token:store.get('pc_a'),mode:mode||''});A.mode=A.data.mode;renderAdmin()}catch(e){if(store.get('pc_a'))app('<div class="wrap"><p class="err-t">'+esc(e.message)+'</p></div>')}}
+function renderAdmin(){
+ const tabs=[['overview','Overview'],['teams','Teams & rankings'],['orders','Orders'],['reports','Reports']];
+ app(`<div class="wrap"><div class="tabs" id="atabs">${tabs.map(t=>'<button data-at="'+t[0]+'" class="'+(t[0]===A.tab?'on':'')+'">'+t[1]+'</button>').join('')}</div><div id="apane" style="margin-top:18px"></div></div>`);
+ document.querySelectorAll('[data-at]').forEach(b=>b.onclick=()=>{A.tab=b.dataset.at;renderAdmin()});
+ ({overview:adminOverview,teams:adminTeams,orders:adminOrders,reports:adminReports})[A.tab]()}
+function adminOverview(){
+ const s=A.data.stats,st=A.data.settings;
+ $('#apane').innerHTML=`<div class="dstats">${stat(nf(s.teams),'Registered teams')+stat(nf(s.orders),'Valid orders')+stat(nf(s.litres)+' L','Litres')+stat(inr(s.sales),'Sales')+stat(inr(s.cash),'Cash collected')+stat(inr(s.due),'Outstanding')+stat(nf(s.customers),'Customers')+stat(nf(s.pending),'Pending orders')+stat(nf(s.delivered),'Delivered')+stat(nf(s.cancelled),'Cancelled')}</div>
+ <div class="card form" style="margin:0"><h3>Settings</h3><label>Price per litre (₹)</label><input data-f="price" type="number" min="0.01" step="0.01" value="${st.price}"><p class="muted">New orders use this price. Existing orders keep the price they were created with.</p>
+ <label>Default homepage ranking</label><select data-f="defaultRanking">${Object.keys(MODE).map(k=>'<option value="'+k+'" '+(k===st.defaultRanking?'selected':'')+'>'+MODE[k]+'</option>').join('')}</select>
+ <p><button class="btn" id="ssave">Save settings</button></p></div>`;
+ $('#ssave').onclick=e=>run(e.target,async()=>{await call('adminSaveSettings',Object.assign({token:store.get('pc_a')},fields()));toast('Settings saved');await loadAdmin(A.mode)})}
+function adminTeams(){
+ const q=A.tq.toLowerCase(),l=A.data.teams.filter(t=>t.name.toLowerCase().includes(q));
+ $('#apane').innerHTML=`<div class="tools"><div class="tabs">${Object.keys(MODE).map(k=>'<button data-am="'+k+'" class="'+(k===A.mode?'on':'')+'">'+MODE[k]+'</button>').join('')}</div><input id="atq" type="search" placeholder="Search teams by name" value="${esc(A.tq)}"></div>
+ <div class="tw"><table><thead><tr><th>Rank</th><th>Team</th><th class="n">Members</th><th class="n">Orders</th><th class="n">Litres</th><th class="n">Sales</th><th class="n">Collected</th><th class="n">Outstanding</th><th>Status</th><th></th></tr></thead><tbody>${l.map(t=>`<tr><td><span class="rk">${t.rank}</span></td><td><b>${esc(t.name)}</b></td><td class="n">${t.members}</td><td class="n">${nf(t.orders)}</td><td class="n">${nf(t.litres)}</td><td class="n">${inr(t.sales)}</td><td class="n">${inr(t.cash)}</td><td class="n">${inr(t.due)}</td><td>${esc(t.status)}</td><td><button class="btn sm ${t.status==='Active'?'red':''}" data-ts="${esc(t.teamId)}" data-st="${t.status==='Active'?'Inactive':'Active'}">${t.status==='Active'?'Deactivate':'Activate'}</button></td></tr>`).join('')||'<tr><td colspan="10" class="empty">No teams found.</td></tr>'}</tbody></table></div>`;
+ document.querySelectorAll('[data-am]').forEach(b=>b.onclick=()=>loadAdmin(b.dataset.am));
+ $('#atq').oninput=e=>{A.tq=e.target.value;adminTeams();const i=$('#atq');i.focus();i.setSelectionRange(i.value.length,i.value.length)};
+ document.querySelectorAll('[data-ts]').forEach(b=>b.onclick=e=>run(b,async()=>{await call('adminTeamStatus',{token:store.get('pc_a'),teamId:b.dataset.ts,status:b.dataset.st});toast('Team updated');await loadAdmin(A.mode)}))}
+const teamOpts=()=>'<option value="">All teams</option>'+A.data.teams.map(t=>'<option value="'+esc(t.teamId)+'">'+esc(t.name)+'</option>').join('');
+const filterBar=(ctx)=>`<div class="card" style="margin-bottom:14px"><div class="grid2">${ctx==='o'?'<div><label>Order ID or customer</label><input data-f="q"></div>':'<div><label>Report</label><select data-f="type">'+[['team','Team-wise'],['customer','Customer-wise'],['daily','Daily orders'],['sales','Sales'],['cash','Cash collection'],['upi','UPI'],['pending','Pending balance'],['delivered','Delivered orders'],['cancelled','Cancelled orders']].map(r=>'<option value="'+r[0]+'">'+r[1]+'</option>').join('')+'</select></div>'}
+ <div><label>Team</label><select data-f="team">${teamOpts()}</select></div>${ctx==='o'?'<div><label>Payment method</label><select data-f="method"><option value="">All</option><option>Ready Cash</option><option>UPI</option><option>Pending</option></select></div><div><label>Status</label><select data-f="status"><option value="">All</option><option>New</option><option>Confirmed</option><option>Delivered</option><option>Cancelled</option></select></div>':''}
+ <div><label>From date</label><input data-f="from" type="date"></div><div><label>To date</label><input data-f="to" type="date"></div></div><div class="bg" style="margin-top:14px"><button class="btn" id="fgo">${ctx==='o'?'Search orders':'Generate report'}</button>${ctx==='r'?'<button class="btn gold" id="fcsv">Export CSV</button>':''}</div></div>`;
+function adminOrders(){
+ $('#apane').innerHTML=filterBar('o')+'<div id="ores"></div>';
+ const go_=b=>run(b,async()=>{A.orders=await call('adminOrders',Object.assign({token:store.get('pc_a')},fields()));showOrders()});$('#fgo').onclick=e=>go_(e.target);go_($('#fgo'))}
+function showOrders(){
+ $('#ores').innerHTML='<p class="muted">'+A.orders.length+' order(s) (up to 1000 shown)</p>'+orderTable(A.orders,'admin');
+ document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>adminEdit(A.orders.find(o=>o.id===b.dataset.edit)))}
+function adminEdit(o){
+ modal(`<h3>Edit ${esc(o.id)}</h3><p class="muted">${esc(o.team)} · price/litre ${inr(o.price)} (fixed for this order)</p><label>Customer name</label><input data-f="customerName" value="${esc(o.customer)}"><div class="grid2"><div><label>Phone</label><input data-f="phone" value="${esc(o.phone)}"></div><div><label>Litres</label><input data-f="litres" type="number" step="0.5" value="${o.litres}"></div>
+ <div><label>Payment method</label><select data-f="method">${['Ready Cash','UPI','Pending'].map(s=>'<option '+(s===o.method?'selected':'')+'>'+s+'</option>').join('')}</select></div><div><label>Amount received (₹)</label><input data-f="amountReceived" type="number" min="0" step="0.01" value="${o.received}"></div></div>
+ <label>Status</label><select data-f="status">${['New','Confirmed','Delivered','Cancelled'].map(s=>'<option '+(s===o.status?'selected':'')+'>'+s+'</option>').join('')}</select><label>Notes</label><textarea data-f="notes" rows="2">${esc(o.notes)}</textarea>
+ <div class="bg" style="margin-top:16px"><button class="btn" id="msave">Save changes</button><button class="btn out" id="mclose">Close</button></div>`);
+ $('#mclose').onclick=closeModal;$('#msave').onclick=e=>run(e.target,async()=>{await call('adminUpdateOrder',Object.assign({token:store.get('pc_a'),orderId:o.id},fields()));closeModal();toast('Order updated');A.orders=await call('adminOrders',{token:store.get('pc_a')});showOrders()})}
+function adminReports(){
+ $('#apane').innerHTML=filterBar('r')+'<div id="rres"></div>';
+ const gen=b=>run(b,async()=>{A.rep=await call('adminReport',Object.assign({token:store.get('pc_a')},fields()));const r=A.rep;
+  $('#rres').innerHTML='<h3>'+esc(r.title)+'</h3>'+(r.rows.length?'<div class="tw"><table><thead><tr>'+r.columns.map(c=>'<th>'+esc(c)+'</th>').join('')+'</tr></thead><tbody>'+r.rows.map(x=>'<tr>'+x.map(v=>'<td>'+esc(v)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>':'<div class="card empty">No data for this report and filter.</div>')});
+ $('#fgo').onclick=e=>gen(e.target);$('#fcsv').onclick=e=>{if(!A.rep)return toast('Generate a report first.','err');csvDownload(A.rep.title.replace(/\s+/g,'_')+'_'+new Date().toISOString().slice(0,10),A.rep.columns,A.rep.rows)}}
+
+/* ---------- boot ---------- */
+renderNav();
+if(INIT_PAGE==='admin'){document.title='Payasam Admin';go('admin')}else go('home');
+</script></body></html>
