@@ -1,0 +1,10 @@
+rules_version='2';
+service cloud.firestore{match /databases/{d}/documents{
+ function adm(){return request.auth!=null&&request.auth.token.admin==true}
+ function own(){return request.auth!=null&&resource.data.teamId==request.auth.uid}
+ match /public/{x}{allow read:if true;allow write:if false}
+ match /teams/{id}{allow read:if adm()||(request.auth!=null&&request.auth.uid==id);allow write:if false}
+ match /members/{id}{allow read:if adm()||own();allow write:if false}
+ match /orders/{id}{allow read:if adm()||own();allow write:if false}
+ match /paymentRecords/{id}{allow read:if adm()||own();allow write:if false}
+}}
